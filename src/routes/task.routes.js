@@ -2,15 +2,15 @@ const express = require('express');
 const router = express.Router();
 const taskController = require('../controllers/task.controller');
 
-router.get('/' , taskController.getTasks);
+router.get('/' ,asyncWrapper(taskController.getTasks));
 
-router.get('/:id', taskController.getTask);
+router.get('/:id', asyncWrapper(taskController.getTask));
 
-router.post('/' , taskController.createTask);
+router.post('/' , asyncWrapper(taskController.createTask));
 
-router.patch('/:id', taskController.updTask);
+router.patch('/:id', asyncWrapper(taskController.updTask));
 
-router.delete('/:id', taskController.delTask);
+router.delete('/:id', asyncWrapper(taskController.delTask));
 
 module.exports = router;
 
