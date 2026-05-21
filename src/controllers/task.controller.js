@@ -5,7 +5,8 @@ const getTasks = async (req,res) => {
 
     const tasks = await Task.find();    
     res.json({
-        msg: 'Tasks retrieved',
+        success:true,
+        message: 'Tasks retrieved',
         data: tasks
     });
     
@@ -18,13 +19,13 @@ const getTask = async (req,res) => {
     if(!task) {
        return res.status(404).json({
         success:false,
-        msg:"Task not found"
+        message:"Task not found"
     });
 
     }
     res.json({
         success:true,
-        msg: 'Task retrieved',
+        message: 'Task retrieved',
         data: task
     });
 
@@ -34,7 +35,7 @@ const createTask =  async (req,res) => {
     const task = await Task.create(req.body);
     res.status(201).json({
        success:true,
-       msg: 'Task was created',
+       message: 'Task was created',
        data: task   
     });
 
@@ -51,8 +52,8 @@ const updTask =  async (req,res) => {
     }
     res.status(200).json({
         success:true, 
-        msg:'Task updated successfully',
-         data:task
+        message:'Task updated successfully',
+        data:task
     });
     
 };
@@ -63,12 +64,12 @@ const delTask =  async (req,res) => {
     if(! task ){
         return res.status(404).json({
             success:false,
-            msg:'Task not found'
+            message:'Task not found'
         });
     }
     res.status(200).json({
         success:true,
-        msg:'Task deleted successfully',
+        message:'Task deleted successfully',
         data:getTasks
     });
    
