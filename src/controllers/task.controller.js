@@ -23,6 +23,7 @@ const getTask = async (req,res) => {
 
     }
     res.json({
+        success:true,
         msg: 'Task retrieved',
         data: task
     });
@@ -44,7 +45,7 @@ const updTask =  async (req,res) => {
     const task = await Task.findByIdAndUpdate(req.params.id,req.body,{new:true});
     if(! task){
         return res.status(404).json({
-            success:true,
+            success:false,
             msg:'Task is not found'
         });
     }

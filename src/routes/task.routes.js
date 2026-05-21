@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const taskController = require('../controllers/task.controller');
+const asyncWrapper = require('../middlewares/asyncWrapper.middleware')
 
 router.get('/' ,asyncWrapper(taskController.getTasks));
 
